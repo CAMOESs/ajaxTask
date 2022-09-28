@@ -14,13 +14,13 @@
 
   <tbody>
     <% @blogs.each do |blog| %>
-      <tr>
+      <tr id="favorite">
         <td><%= blog.title %></td>
         <td><%= blog.description %></td>
         <td><%= blog.user.name %></td>
         <td><%= link_to 'Show', blog %></td>
-        <td id="favorite-<%= blog.id %>">
-          <%= render partial: "favorite", locals: { blog: blog } if blog.user != current_user %>
+        <td id="favorite-<%= blog.id %>" class="favorite">
+          <%= render partial: "favorite", remote: true, locals: { blog: blog } if blog.user != current_user %>
         </td>
       </tr>
     <% end %>
